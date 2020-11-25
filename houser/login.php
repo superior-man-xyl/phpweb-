@@ -1,21 +1,12 @@
 <!DOCTYPE html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8">
 <title>登陆页</title>
 </head>
 <body>
     <?php  
-    ob_start();
+    // ob_start();
     session_start();
-    $conn=mysql_connect("localhost","root","");
-    // if ($conn->connect_error) {
-    //     die("连接失败: " . $conn->connect_error);
-    // } 
-    // echo "连接成功";
-    mysql_query("set names 'utf8'");
-    mysql_select_db("house",$conn);
-    $result=mysql_query("select * from user",$conn);
-    print_r(mysql_fetch_assoc($result));
     function dlb()
     {
         echo'<h2 align="center">系统登陆</h2>
@@ -23,8 +14,8 @@
         <form action="" method="post">
          <table border="0" align="center">
           <tr>
-            <td scope="col"><label for="user">用户名&nbsp;&nbsp;&nbsp;</label></td>
-            <td colspan="2" scope="col"><input type="text" name="user" id="user" /></td>
+            <td scope="col"><label for="user">账户号&nbsp;&nbsp;&nbsp;</label></td>
+            <td colspan="2" scope="col"><input type="text" name="phone" id="phone" /></td>
             </tr>
           <tr>
             <td> <label for="pass">密&nbsp;&nbsp;&nbsp;&nbsp;码&nbsp;&nbsp;&nbsp;</label></td>
@@ -38,60 +29,64 @@
         </table>
         </form>';
     }
-    dlb();
-    // if(isset($_SESSION["user"]))
-    // {
-    //     header("location:用户主页.php");
-    // }
-    // else if(isset($_POST["submit"]))
-    // {
-    //     $name=$_POST["user"];
-    //     $pass=$_POST["pass"];
-    //     if($name==NULL||$pass==NULL)
-    //     {
-    //         dlb();
-    //         echo'<p align="center" style="color:red;">用户名或密码为空！';
-    //     }
-    //     else{
-    //         $conn=mysql_connect("127.0.0.1","root","");
-    //         mysql_query("set names 'utf_8'");
-    //         mysql_select_db("house",$conn);
-    //         $result=mysql_query("select * from user",$conn);
-    //         print_r(mysql_fetch)
-            // while($row=mysql_fetch_assoc($result))
-            // {
-            //     echo'';
-            // }
-    //         if (isset($_SESSION['user'])) {
-    //             for ($i=0,$j=1;$i<count($_COOKIE['name']);$i++) {
-    //                 if ($name==$_COOKIE['name'][$i] ) {
-    //                     if($pass==$_COOKIE['ps'][$i])
-    //                     {
-    //                         header("location:显示资料.php");
-    //                     }
-    //                     else{
-    //                         dlb();
-    //                         echo'<h3 align="center" style="color:red;">密码错误</h3>';
-    //                     }
-    //                 } else {
-    //                     $j++;
-    //                     if ($j==count($_COOKIE['name'])) {
-    //                         dlb();
-    //                         echo'<h3 align="center" style="color:red;">请先注册</h3>';
-    //                     }
-    //                 }
-    //             }
-    //         } else
-    //         {
-    //             dlb();
-    //             echo'<h3 align="center" style="color:red;">请先注册</h3>';
-    //         }
-    //     }
-    // }
-    // else
-    // {
-    //     dlb();
-    // }
-?>
-</body>
-</html>
+    $conn=mysql_connect("localhost","root","");
+    // if ($conn->connect_error) {
+    //     die("连接失败: " . $conn->connect_error);
+    // } 
+    // echo "连接成功";
+    mysql_query("set names 'utf8'");
+    mysql_select_db("house",$conn);
+    $result=mysql_query("select * from user",$conn);
+    print_r(mysql_fetch_assoc($result));
+    if(isset($_SESSION['phone']))
+    {
+      header("location:usershow.php");
+    }
+    else
+    { 
+      if(isset($_POST["submit"]))
+      {
+      $phone=$_POST['phone']; 
+      $pass=$_POST['pass'];
+      if($phone==NULL||$pass==NULL)
+      {
+        dlb();
+        echo"用户名或者密码为空，请检查";
+      }
+      else//用户名和密码都填写了
+      {
+        while ($row=mysql_fetch_assoc($result))
+          {
+            
+              if ($row['id']==$phone) 
+              {
+                  if ($row['password']==$pass) 
+                  {
+                    $_SESSION["phone"]=$phone;
+                    $_SESSION['pass']=$pass;
+                    header("location:usershow.php");
+                  break;
+                  } 
+                  else 
+                  {
+                      dlb();
+                      echo"密码错误";
+                  break;
+                  }
+              }
+          }  
+      }
+      if ($row==false) 
+          {
+              dlb();
+              echo"用户不存在";
+          }
+    }
+    else
+    {
+      dlb();
+    }
+  }
+    ?>
+    </body>
+    </html>
