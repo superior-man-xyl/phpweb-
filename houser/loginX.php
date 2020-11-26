@@ -104,3 +104,9 @@ where($row=mysql_fetch_assoc($result))
 </tr>';
 }
 ?>
+
+<tr>
+        <td>性别</td>
+        <td colspan='2' ><input type='radio' name='gender' value='{$row['gender']}' checked />{$row['gender']}
+        <input type='radio' name='gender' value='{if($row['gender']=='男') echo'女'}' /> {if($row['gender']=='男') echo'女'} </td>
+    </tr>
