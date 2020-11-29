@@ -23,8 +23,8 @@
             </tr>
           <tr>
             <td  colspan="2" align="left"><input type="submit" name="submit" id="button" value="登陆" /></td>
-            <td align="right" width=90px><a href="注册页.php" style="text-decoration:none;">注册</a></td>
-            <td align="right" width=90px><a href="管理员登陆.php" style="text-decoration:none;">管理员登陆</a></td>
+            <td align="right" width=90px><a href="register.php" style="text-decoration:none;">注册</a></td>
+            <td align="right" width=90px><a href="../manage/managelogin.php" style="text-decoration:none;">管理员登陆</a></td>
             </tr>
         </table>
         </form>';
@@ -64,6 +64,10 @@
                   {
                     $_SESSION["phone"]=$phone;
                     $_SESSION['pass']=$pass;
+                    $_SESSION['name']=$row['name'];
+                    $_SESSION['sfz']=$row['sfz'];
+                    $_SESSION['gender']=$row['gender'];
+                    $_SESSION['id']=$row['id'];
                     header("location:usershow.php");
                   break;
                   } 
