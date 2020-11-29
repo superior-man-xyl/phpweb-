@@ -7,21 +7,62 @@
 </head>
 <body>
     <?php
-    $conn=mysql_connect("localhost","root","");
-    mysql_query("set names 'utf8'");
-    mysql_select_db("house",$conn);
-    $result=mysql_query("select * from house",$conn);
-    $id=intval($_GET['id']);
-    $state=$_POST["state"];
-    $dizhi=$_POST["dizhi"];
-    $huxing=$_POST["huxing"];
-    $chaox=$_POST["chaox"];
-    $mianji=$_POST["mianji"];
-    $money=$_POST["money"];
-    $sql="update user set state='$state',dizhi='$dizhi',huxing='$huxing',chaox='$chaox',mianji='$mianji' where houseid=$id";
-    mysql_query($sql) or die('执行失败');
-    //mysql_close($conn);
-    echo"<script>alert('该用户信息已修改成功！确认后跳转回用户管理页面');location.href='manageshow_house.php'</script>";
+    session_start();
+     if (isset($_SESSION['muser'])) {
+         $conn=mysql_connect("localhost", "root", "");
+         mysql_query("set names 'utf8'");
+         mysql_select_db("house", $conn);
+         $result=mysql_query("select * from house", $conn);
+         $id=intval($_GET['id']);
+         $state=$_POST["state"];
+         $dizhi=$_POST["dizhi"];
+         $huxing=$_POST["huxing"];
+         $chaox=$_POST["chaox"];
+         $mianji=$_POST["mianji"];
+         $money=$_POST["money"];
+         $j=0;
+        if($state==NULL)
+        {
+            echo'<p style="color:red;" align="center">状态为空！</p>';
+            $j++;
+        }
+        if($dizhi==NULL)
+        {
+            echo'<p style="color:red;" align="center">地址为空！</p>';
+            $j++;
+        }
+        if($huxing==NULL)
+        {
+            echo'<p style="color:red;" align="center">户型为空！</p>';
+            $j++;
+        }
+        if($chaox==NULL)
+        {
+            echo'<p style="color:red;" align="center">朝向为空！</p>';
+            $j++;
+        }
+        if($mianji==NULL)
+        {
+            echo'<p style="color:red;" align="center">面积为空！</p>';
+            $j++;
+        }
+        if($money==NULL)
+        {
+            echo'<p style="color:red;" align="center">租金为空！</p>';
+            $j++;
+        }
+        if (j==0) {
+            $sql="update house set state='$state',dizhi='$dizhi',huxing='$huxing',chaox='$chaox',mianji='$mianji' where houseid=$id";
+            mysql_query($sql) or die('执行失败');
+            //mysql_close($conn);
+            echo"<script>alert('该用户信息已修改成功！确认后跳转回房屋管理页面');location.href='manageshow_house.php'</script>";
+        }else{
+            echo"<script>alert('信息不全，修改失败！确认后跳转回房屋管理页面');location.href='manageshow_house.php'</script>";
+        }
+     }
+     else{
+        echo'<h1 align="center">您未登陆，不可访问</h1>';
+      }
     ?>
 </body>
 </html>

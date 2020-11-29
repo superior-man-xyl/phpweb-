@@ -5,15 +5,17 @@
 </head>
 <body>
   <?php
- $conn=mysql_connect("localhost","root","");
- mysql_query("set names 'utf8'");
- mysql_select_db("house",$conn);
- $result=mysql_query("select * from fuser",$conn);
-  $id=intval($_GET['id']);
-  $sql="select * from fuser where id=$id";
-  $result=mysql_query($sql,$conn);
-  $row=mysql_fetch_assoc($result);
-  echo"
+  session_start();
+   if (isset($_SESSION['muser'])) {
+       $conn=mysql_connect("localhost", "root", "");
+       mysql_query("set names 'utf8'");
+       mysql_select_db("house", $conn);
+       $result=mysql_query("select * from fuser", $conn);
+       $id=intval($_GET['id']);
+       $sql="select * from fuser where id=$id";
+       $result=mysql_query($sql, $conn);
+       $row=mysql_fetch_assoc($result);
+       echo"
 <h2 align='center' style='font-weight:bold;'>用户信息修改</h2>
 <br/><br/>
 <form action='editfuser.php?id={$row['id']}' method='post'>
@@ -37,27 +39,32 @@
     <td> <label for='gender'>性别</label></td>
     <td colspan='2'><input type='text' name='gender' id='gender' value='{$row['gender'] }' /></td>
     </tr>
+    <tr>
+    <td> <label for='alltime'>剩余时间</label></td>
+    <td colspan='2'><input type='text' name='alltime' id='alltime' value='{$row['alltime'] }' /></td>
+    </tr>
+    <tr>
+    <td> <label for='yj'>押金</label></td>
+    <td colspan='2'><input type='text' name='yj' id='yj' value='{$row['yj'] }' /></td>
+    </tr>
+    <tr>
+    <td> <label for='starttime'>开始时间</label></td>
+    <td colspan='2'><input type='date' name='starttime' id='starttime' value='{$row['starttime'] }' /></td>
+    </tr>
+    <tr>
+    <td> <label for='endtime'>到期时间</label></td>
+    <td colspan='2'><input type='date' name='endtime' id='endtime' value='{$row['endtime'] }' /></td>
+    </tr>
     
-    <td> <label for='gender'>性别</label></td>
-    <td colspan='2'><input type='text' name='gender' id='gender' value='{$row['gender'] }' /></td>
-    </tr>
-    <td> <label for='gender'>性别</label></td>
-    <td colspan='2'><input type='text' name='gender' id='gender' value='{$row['gender'] }' /></td>
-    </tr>
-    <td> <label for='gender'>性别</label></td>
-    <td colspan='2'><input type='text' name='gender' id='gender' value='{$row['gender'] }' /></td>
-    </tr>
-    <td> <label for='gender'>性别</label></td>
-    <td colspan='2'><input type='text' name='gender' id='gender' value='{$row['gender'] }' /></td>
-    </tr>
-    <td> <label for='gender'>性别</label></td>
-    <td colspan='2'><input type='text' name='gender' id='gender' value='{$row['gender'] }' /></td>
-    </tr>
   <tr>
     <td  colspan='3' align='center'><input type='submit' name='submit' id='button' value='提交' /></td>
     </tr>
 </table>
 </form>";
+   }
+   else{
+     echo'<h1 align="center">您未登陆，不可访问</h1>';
+   }
 ?>
 </body>
 </html>

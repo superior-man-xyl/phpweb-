@@ -5,15 +5,23 @@
 </head>
 <body>
   <?php
- $conn=mysql_connect("localhost","root","");
- mysql_query("set names 'utf8'");
- mysql_select_db("house",$conn);
- $result=mysql_query("select * from house",$conn);
-  $id=intval($_GET['id']);
-  $sql="select * from house where houseid=$id";
-  $result=mysql_query($sql,$conn);
-  $row=mysql_fetch_assoc($result);
-  echo"
+  session_start();
+   if (isset($_SESSION['muser'])) {
+       $conn=mysql_connect("localhost", "root", "");
+       mysql_query("set names 'utf8'");
+       mysql_select_db("house", $conn);
+       $result=mysql_query("select * from house", $conn);
+       $j=0;
+        if($name==NULL)
+        {
+            echo'<p style="color:red;" align="center">姓名为空！</p>';
+            $j++;
+        }
+       $id=intval($_GET['id']);
+       $sql="select * from house where houseid=$id";
+       $result=mysql_query($sql, $conn);
+       $row=mysql_fetch_assoc($result);
+       echo"
 <h2 align='center' style='font-weight:bold;'>房屋信息修改</h2>
 <br/><br/>
 <form action='edithouse.php?id={$row['houseid']}' method='post'>
@@ -54,6 +62,10 @@
     </tr>
 </table>
 </form>";
+   }
+   else{
+    echo'<h1 align="center">您未登陆，不可访问</h1>';
+  }
 ?>
 </body>
 </html>

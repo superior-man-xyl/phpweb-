@@ -4,9 +4,13 @@
 <title>退出页面</title>
 </head>
 <body>
+<?php
+session_start();
+function tc(){
+    echo'
 <table align="center" width="360px">
         <tr>
-            <td><a href="manageshow.html">返回管理员主页</a></td>
+            <td><a href="manageshow.php">返回管理员主页</a></td>
         </tr>
 </table>
 <table align="center" width="360px">
@@ -19,22 +23,27 @@
     <td colspan="2" align="center"><input type="submit" name="submit" value="确定"></td>
 </tr>
 </form>
-</table>
-<?php
-if(isset($_POST["submit"]))
-{
-    $out=$_POST["out"];
-    if ($out==1) {
-        header("location:firstpage.html");
-    } else{
-        session_start();
-        setcookie("user", "", time()-600);
-        session_unset();
-        session_destroy();
-        mysql_close($conn);
-        header("location:firstpage.html");
-    }
+</table>';
 }
+ if (isset($_SESSION['muser'])) {
+     tc();
+     if (isset($_POST["submit"])) {
+         $out=$_POST["out"];
+         if ($out==1) {
+             header("location:../firstpage.html");
+         } else {
+             session_start();
+             setcookie("muser", "", time()-600);
+             session_unset();
+             session_destroy();
+             mysql_close($conn);
+             header("location:../firstpage.html");
+         }
+     }
+ }
+ else{
+    echo'<h1 align="center">您未登陆，不可访问</h1>';
+  }
 ?>
 </body>
 </html>

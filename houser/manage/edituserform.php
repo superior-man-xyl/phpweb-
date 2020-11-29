@@ -5,15 +5,17 @@
 </head>
 <body>
   <?php
- $conn=mysql_connect("localhost","root","");
- mysql_query("set names 'utf8'");
- mysql_select_db("house",$conn);
- $result=mysql_query("select * from user",$conn);
-  $id=intval($_GET['id']);
-  $sql="select * from user where id=$id";
-  $result=mysql_query($sql,$conn);
-  $row=mysql_fetch_assoc($result);
-  echo"
+  session_start();
+   if (isset($_SESSION['muser'])) {
+       $conn=mysql_connect("localhost", "root", "");
+       mysql_query("set names 'utf8'");
+       mysql_select_db("house", $conn);
+       $result=mysql_query("select * from user", $conn);
+       $id=intval($_GET['id']);
+      $sql="select * from user where id=$id";
+       $result=mysql_query($sql, $conn);
+       $row=mysql_fetch_assoc($result);
+       echo"
 <h2 align='center' style='font-weight:bold;'>用户信息修改</h2>
 <br/><br/>
 <form action='edituser.php?id={$row['id']}' method='post'>
@@ -42,6 +44,10 @@
     </tr>
 </table>
 </form>";
+   }
+   else{
+    echo'<h1 align="center">您未登陆，不可访问</h1>';
+  }
 ?>
 </body>
 </html>
