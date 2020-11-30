@@ -43,7 +43,7 @@
            <th>租金</th>
            <th colspan="2">删除</th>
    </tr>';
-   while ($row=mysql_fetch_assoc($result)) {
+   while ($row=mysql_fetch_assoc($rs)) {
     echo"
     <tr>
     <td><img src='{$row['img']}'></td>

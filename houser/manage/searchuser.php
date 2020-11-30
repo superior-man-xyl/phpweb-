@@ -40,7 +40,7 @@
                <th>身份证号码</th>
                <th>电话号码</th> 
    </tr>';
-   while ($row=mysql_fetch_assoc($result)) {
+   while ($row=mysql_fetch_assoc($rs)) {
     echo"
 <tr>
 <td>{$row['id']}</td>

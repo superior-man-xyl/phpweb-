@@ -45,7 +45,7 @@
            <th>到期时间</th>
            <th>删除</th>
    </tr>';
-   while ($row=mysql_fetch_assoc($result)) {
+   while ($row=mysql_fetch_assoc($rs)) {
     echo"
     <tr>
     <td>{$row['id']}</td>
