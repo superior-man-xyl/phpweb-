@@ -3,53 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>用户主页</title>
-    <style>
-        div{
-            /* background-color:green; */
-            color:black;
-            height:100px;
-            width:100px;
-        }
-    div:nth-child(odd){
-            background-color:yellow;
-        }
-    </style>
+    <title>续租页</title>
 </head>
 <body>
 <a href="outsystem.php">退出系统</a>
+    <div><a href='tuiz.php'>我要退房</a></div>
+    <div><a href='usershow.php'>回到首页</a></div> 
+    <!-- <div><a href='zhufan.php'>我要租房</a></div> -->
+    <div>
     <?php
     session_start();
     if (isset($_SESSION['phone'])) {
         // echo $_SESSION['name'];
-        echo"欢迎您，亲爱的用户".$_SESSION['name'];
+        echo"<h3 align='center'>续租更实惠，亲爱的用户".$_SESSION['name']."</h3>";
     }
     else{
         echo'<a align="center">您未登陆，禁止访问!</a>';
         echo"<script>alert('您未登陆，禁止访问!确认后进行登陆');location.href='login.php'</script>";
     }
-    ?>
-    <div><a href='zhufan.php'>我要租房</a></div>
-    <div><a href='tuiz.php'>我要退房</a></div>
-    <div><a href='xuzu.php'>我要续租</a></div>
-    <div><?php 
-    echo"<div><table style='border:1px solid;' align='center' width='600px'>
-    <tr>
-    <td>名字：</td>
-    <td>{$_SESSION['name']}</td>
-    </tr>
-    <tr>
-    <td>电话号码：</td>
-    <td>{$_SESSION['phone']}</td>
-    </tr>
-    <tr>
-    <td>身份证号：</td>
-    <td>{$_SESSION['sfz']}</td>
-    </tr>
-    <tr>
-    <td>性别：</td>
-    <td>{$_SESSION['gender']}</td>
-    </tr></div>";
+    // echo"<div><table style='border:1px solid;' align='center' width='600px'>
+    // <tr>
+    // <td>名字：</td>
+    // <td>{$_SESSION['name']}</td>
+    // </tr>
+    // <tr>
+    // <td>电话号码：</td>
+    // <td>{$_SESSION['phone']}</td>
+    // </tr>
+    // <tr>
+    // <td>身份证号：</td>
+    // <td>{$_SESSION['sfz']}</td>
+    // </tr>
+    // <tr>
+    // <td>性别：</td>
+    // <td>{$_SESSION['gender']}</td>
+    // </tr></div>";
     $conn=mysql_connect("localhost", "root", "");
        mysql_query("set names 'utf8'");
        mysql_select_db("house", $conn);
@@ -57,7 +45,7 @@
         $result=mysql_query($sql, $conn);
         if(mysql_num_rows($result)>0){
             $row=mysql_fetch_assoc($result);
-            echo"
+            echo"<table style='border:1px solid;' align='center' width='600px'>
     <tr>
     <td>我的房屋</td>
     <td><img src='{$row['img']}'></td>
@@ -81,7 +69,17 @@
     <tr>
     <td>到期时间：</td>
     <td>{$row['endtime']}</td>
-    </tr></table>
+    </tr>
+    <form action='xuzuqr.php?num={$row['alltime']}&endtime={$row['endtime']}' method='post'>
+    <tr>
+    <td><label for='time'>续租时长<label></td>
+    <td><input type='text' name='time' id='time'/></td>
+    </tr>
+    <tr>
+    <td colspan='2'><input type='submit' name='submit' value='确认'></td>
+    </tr>
+    </form>
+    </table>
             ";
         }
         else{

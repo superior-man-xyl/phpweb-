@@ -38,8 +38,8 @@
                        <th>面积</th> 
                        <th>租金</th>
                </tr>';
-               while ($row=mysql_fetch_assoc($result)) {
-                   if($row['state']!="已出租"){
+               while ($row=mysql_fetch_assoc($rs)) {
+                   if($row['state']=="未出租"){
                 echo"
                 <tr>
                 <td><img src='{$row['img']}'></td>
