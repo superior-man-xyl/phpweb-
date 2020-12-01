@@ -1,0 +1,10 @@
+body{
+    background:url("image/b2.jpg");
+}
+div{
+    padding: 50px auto;
+}
+h2,td{
+    color: bisque;
+    padding-top: 50px;
+}

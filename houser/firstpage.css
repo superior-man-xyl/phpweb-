@@ -1,0 +1,57 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background: url("image/b1.jfif") no-repeat;
+}
+.d{
+    display: flex;
+    height: 50%;
+    width: 50%;
+    margin: 0 auto;
+}
+.d1,.d2{
+    height: 50%;
+    width: 50%;
+    flex:1;
+    margin: 0 auto;
+}
+h1{
+    padding: 50px;
+}
+.d1 a{
+    background: #c1f504;
+    display: block;/*将a转为块级元素*/
+    width: 184px;
+    margin-left: auto;/*居中*/
+    margin-right: auto;
+    padding: 8px 24px;
+    font-weight: 700;
+    font-size: 17px;
+    text-align: center;
+    text-decoration: none;
+    color:#fff;
+    line-height: 1.41176471;
+    border-radius: 9px;
+    overflow: hidden;
+}
+.d2 a{
+    background: #0ae5f5;
+    display: block;/*将a转为块级元素*/
+    width: 184px;
+    margin-left: auto;/*居中*/
+    margin-right: auto;
+    padding: 0 24px;
+    font-weight: 700;
+    font-size: 15px;
+    text-align: center;
+    text-decoration: none;
+    color:#fff;
+    line-height: 1.41176471;
+    border-radius: 9px;
+    overflow: hidden;
+}
+a:hover{
+    color:rgb(20, 4, 80);
+}
