@@ -2,6 +2,7 @@
 <head>
 <meta charset="utf-8">
 <title>登陆页</title>
+<link rel="stylesheet" type="text/css" href="../login.css">
 </head>
 <body>
     <?php  
@@ -9,7 +10,7 @@
     session_start();
     function dlb()
     {
-        echo'<h2 align="center">系统登陆</h2>
+        echo'<div><h2 align="center">系统登陆</h2>
         <br/><br/>
         <form action="" method="post">
          <table border="0" align="center">
@@ -27,7 +28,7 @@
             <td align="right" width=90px><a href="../manage/managelogin.php" style="text-decoration:none;">管理员登陆</a></td>
             </tr>
         </table>
-        </form>';
+        </form></div>';
     }
     $conn=mysql_connect("localhost","root","");
     // if ($conn->connect_error) {
@@ -48,16 +49,18 @@
       {
       $phone=$_POST['phone']; 
       $pass=$_POST['pass'];
+      $a=0;
+      $row=0;
       if($phone==NULL||$pass==NULL)
       {
         dlb();
-        echo"用户名或者密码为空，请检查";
+        echo"<p style='color:red;'>用户名或者密码为空，请检查</style>";
       }
       else//用户名和密码都填写了
       {
         while ($row=mysql_fetch_assoc($result))
           {
-            
+            $a=1;
               if ($row['phone']==$phone) 
               {
                   if ($row['password']==$pass) 
@@ -74,20 +77,21 @@
                   else 
                   {
                       dlb();
-                      echo"密码错误";
+                      echo"<p style='color:red;'>密码错误</p>";
                   break;
                   }
               }
           }  
       }
-      if ($row==false) 
+      if ($row==false&&$a==1) 
           {
               dlb();
-              echo"用户不存在";
+              echo"<p style='color:red'>用户不存在</p>";
           }
     }
     else
     {
+      echo"<p style='color:red;'>xcxvcvsdf</p>";
       dlb();
     }
   }

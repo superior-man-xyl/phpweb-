@@ -2,6 +2,13 @@
 <head>
 <meta charset="utf-8">
 <title>注册页</title>
+<style>
+       body{
+            background:url(../image/b3.jfif);
+            margin:100px;
+       }
+
+    </style>
 </head>
 <body>
         <h2 align="center">新用户注册</h2>

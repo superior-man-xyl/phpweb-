@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>管理员主页</title>
     <style>
+        
+       body{
+            background:url(../image/b3.jfif);
+       }
         *{
             padding: 0;
             margin: 0;
@@ -45,7 +49,7 @@
     <?php 
         session_start();
         if(isset($_SESSION['muser'])){
-            echo'<div class="d1"><a href="manageshow_user.php">查看用户</a></div>
+            echo'<h1 align="center">请选择模块</h1><div class="d1"><a href="manageshow_user.php">查看用户</a></div>
     <div class="d3"><a href="manageshow_house.php">房屋管理</a></div>
     <div class="d2"><a href="manageshow_fuser.php">查看租户</a></div>
     <div class="d4"><a href="moutsystem.php">退出登陆</a></div>';

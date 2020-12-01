@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>管理员管理页面(所有用户)</title>
+    <style>
+       body{
+            background:url(../image/b3.jfif);
+       }
+    </style>
 </head>
 <body>
 <a href="manageshow_fuser.php">租客管理</a>

@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>修改租户中</title>
+    <style>
+       body{
+            background:url(../image/b3.jfif);
+       }
+    </style>
 </head>
 <body>
     <?php

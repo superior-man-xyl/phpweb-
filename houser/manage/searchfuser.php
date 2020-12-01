@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>租户查找结果</title>
+    <style>
+       body{
+            background:url(../image/b3.jfif);
+       }
+    </style>
 </head>
 <body>
 <a href="manageshow_user.php">客户管理</a>

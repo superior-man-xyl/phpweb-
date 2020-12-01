@@ -2,6 +2,11 @@
 <head>
 <meta charset="utf-8">
 <title>退出页面</title>
+<style>
+       body{
+            background:url(../image/b3.jfif);
+       }
+    </style>
 </head>
 <body>
 <?php
