@@ -17,6 +17,14 @@ body{
     font-size: 1.25em;
     text-decoration: none;
 }
+.d2:hover{
+    color:rgba(221, 147, 10, 0.884);
+}
 table{
     margin-top: 100px;
+    border:1px solid;
+}
+tr:nth-child(odd){
+    background: rgb(186, 200, 204);
+    border:1px solid;
 }
