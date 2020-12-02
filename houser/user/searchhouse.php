@@ -8,6 +8,12 @@
        body{
             background:url(../image/b3.jfif);
        }
+       tr:nth-child(odd){
+    background: rgb(186, 200, 204);
+}
+tr:nth-child(even){
+    background:rgb(122,133,136);
+}
     </style>
 </head>
 <body>

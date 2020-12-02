@@ -8,6 +8,9 @@
        body{
             background:url(../image/b3.jfif);
        }
+       tr:nth-child(even){
+    background:rgb(122,133,136);
+}
     </style>
 </head>
 <body>

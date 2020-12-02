@@ -8,6 +8,9 @@
        body{
             background:url(../image/b3.jfif);
        }
+       tr:nth-child(even){
+    background:rgb(122,133,136);
+}
     </style>
 </head>
 <body>
@@ -57,7 +60,7 @@
     <td>{$row['endtime']}</td>
     </tr>
     <tr>
-    <td colspan='2'><a href='tuizqr.php?alltime={$row['alltime']}&houseid={$row['houseid']}&money={$row['money']}'>确认退租</a></td>
+    <td colspan='2' align='center'><a href='tuizqr.php?alltime={$row['alltime']}&houseid={$row['houseid']}&money={$row['money']}'>确认退租</a></td>
     </tr>
     </form>
     </table>

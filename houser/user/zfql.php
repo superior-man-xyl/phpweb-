@@ -81,7 +81,7 @@
       mysql_query($sql) or die('执行失败');
       //$result=mysql_query($sql,$conn);
      // var_dump($result);//or die('执行失败');
-      echo"<script>alert('租房成功！确认后跳转回用户主页面');location.href='usershow.php'</script>";
+      echo"<script>alert('租房成功！确认后跳转回用户主页面');location.href='fwstate.php?id={$id}'</script>";
         }
      }
    else{

@@ -8,6 +8,12 @@
        body{
             background:url(../image/b3.jfif);
        }
+       tr:nth-child(odd){
+    background: rgb(186, 200, 204);
+}
+tr:nth-child(even){
+    background:rgb(122,133,136);
+}
     </style>
 </head>
 <body>
@@ -54,7 +60,7 @@
      <td>{$row['chaox']}</td>
      <td>{$row['mianji']}</td>
      <td>{$row['money']}</td>
-     <td align='center'><a href='fwstate.php?id={$row['houseid']}'>租下</a></td>
+     <td align='center'><a href='zfql.php?id={$row['houseid']}'>租下</a></td>
  </tr>
      ";
          }

@@ -20,7 +20,7 @@
        $sql="update house set state='已出租' where houseid=$id";
        mysql_query($sql) or die('执行失败');
     //    mysql_close($conn);
-    header("location:zfql.php?id=$id");
+    header("location:usershow.php");
    }
    else{
     

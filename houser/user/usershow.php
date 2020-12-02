@@ -5,11 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>用户主页</title>
     <link rel="stylesheet" text="text/css" href="../usershow.css">
-    <!-- <style>
-       body{
-            background:url(../image/b3.jfif);
-       }
-    </style> -->
+   <style>
+       table{
+    margin-top: 200px;
+    border:1px solid;
+}
+.d1{
+    padding-left: 40px;
+    width: 100%;
+    height: 20px;
+    display:flex;
+}
+.d2{
+    /* float:right; */
+    flex:1;
+    background:rgba(221, 147, 10, 0.884);
+    width: 25%;
+    display:inline-block ;
+    color:#fff;
+    border-radius: 8px;
+    font-size: 1.25em;
+    text-decoration: none;
+}
+.d2:hover{
+    color: rgb(186, 200, 204);
+    margin-top:20px;
+    background: yellow;
+}
+tr:nth-child(odd){
+    background: rgb(186, 200, 204);
+}
+tr:nth-child(even){
+    background:rgb(122,133,136);
+}
+td{
+    border:1px solid;
+}
+    </style> 
 </head>
 <body>
 
@@ -17,7 +49,7 @@
     session_start();
     if (isset($_SESSION['phone'])) {
         // echo $_SESSION['name'];
-        echo"<h1>欢迎您，亲爱的用户".$_SESSION['name']."</h1>";
+        echo"<h1 align='center'>欢迎您，亲爱的用户".$_SESSION['name']."</h1>";
     }
     else{
         echo'<a align="center">您未登陆，禁止访问!</a>';
@@ -31,7 +63,8 @@
     <a href='xuzu.php'><div class="d2">我要续租</div></a>
 </div>
     <?php 
-    echo"<div><table style='border:1px solid;' align='center' width='600px'>
+    echo"<div class='f1'><table  align='center' width='700px'>
+    <tr><th colspan='2' align='center'><h3> 我的基本信息</h3></tr>
     <tr>
     <td>名字：</td>
     <td>{$_SESSION['name']}</td>
