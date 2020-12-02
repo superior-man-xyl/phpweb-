@@ -45,13 +45,13 @@
                 dlb();
                 echo'<p align="center" style="color:red;">用户名或密码为空！';
             } else {
-                if ($user=="root"||$pass==123456) {
+                if ($user=="root"&&$pass=="123456") {
                     $_SESSION["muser"]=$user;
                     $_SESSION['pass']=$pass;
                     header("location:manageshow.php");//用户名和密码都正确，进行跳转到管理员主页面。
                 } else {
                     dlb();
-                    echo"请检查管理员账户和密码是否正确";
+                    echo"<p style='color:red;' align='center'>请检查管理员账户和密码是否正确";
                 }
             }
         }

@@ -28,35 +28,35 @@
          $j=0;
         if($state==NULL)
         {
-            echo'<p style="color:red;" align="center">状态为空！</p>';
+            echo"<script>alert('状态为空!');</script>";
             $j++;
         }
         if($dizhi==NULL)
         {
-            echo'<p style="color:red;" align="center">地址为空！</p>';
+            echo"<script>alert('地址为空!');</script>";
             $j++;
         }
         if($huxing==NULL)
         {
-            echo'<p style="color:red;" align="center">户型为空！</p>';
+            echo"<script>alert('户型为空!');</script>";
             $j++;
         }
         if($chaox==NULL)
         {
-            echo'<p style="color:red;" align="center">朝向为空！</p>';
+            echo"<script>alert('朝向为空!');</script>";
             $j++;
         }
         if($mianji==NULL)
         {
-            echo'<p style="color:red;" align="center">面积为空！</p>';
+            echo"<script>alert('面积为空!');</script>";
             $j++;
         }
         if($money==NULL)
         {
-            echo'<p style="color:red;" align="center">租金为空！</p>';
+            echo"<script>alert('租金为空!');</script>";
             $j++;
         }
-        if (j==0) {
+        if ($j==0) {
             $sql="update house set state='$state',dizhi='$dizhi',huxing='$huxing',chaox='$chaox',mianji='$mianji' where houseid=$id";
             mysql_query($sql) or die('执行失败');
             //mysql_close($conn);

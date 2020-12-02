@@ -31,50 +31,50 @@
          $j=0;
          if($name==NULL)
          {
-             echo'<p style="color:red;" align="center">姓名为空！</p>';
+            echo"<script>alert('姓名为空!');</script>";
              $j++;
          }
          if($homeid==NULL)
          {
-             echo'<p style="color:red;" align="center">房屋编号为空！</p>';
+            echo"<script>alert('房屋编号为空!');</script>";
              $j++;
          }
          if($gender==NULL)
          {
-             echo'<p style="color:red;" align="center">性别为空！</p>';
+            echo"<script>alert('性别为空!');</script>";
              $j++;
          }
          if($sfz==NULL)
          {
-             echo'<p style="color:red;" align="center">身份证号为空！</p>';
+            echo"<script>alert('身份证号为空!');</script>";
              $j++;
          }
          if($phone==NULL)
          {
-             echo'<p style="color:red;" align="center">电话号码为空！</p>';
+            echo"<script>alert('电话号码为空!');</script>";
              $j++;
          }
          if($alltime==NULL)
          {
-             echo'<p style="color:red;" align="center">租聘总时间为空！</p>';
+            echo"<script>alert('租凭总时长为空!');</script>";
              $j++;
          }
          if($yj==NULL)
          {
-             echo'<p style="color:red;" align="center">押金为空！</p>';
+            echo"<script>alert('押金为空!');</script>";
              $j++;
          }
          if($starttime==NULL)
          {
-             echo'<p style="color:red;" align="center">开始时间为空！</p>';
+            echo"<script>alert('开始时间为空!');</script>";
              $j++;
          }
          if($endtime==NULL)
          {
-             echo'<p style="color:red;" align="center">结束时间为空！</p>';
+            echo"<script>alert('结束时间为空!');</script>";
              $j++;
          }
-         if (j==0) {
+         if ($j==0) {
              $sql="update fuser set name='$name',homeid='$homeid',sfz='$sfz',phone='$phone',gender='$gender',alltime='$alltime',yj='$yj',starttime='$starttime',endtime='$endtime' where id=$id";
              mysql_query($sql) or die('执行失败');
              echo"<script>alert('该租户信息已修改成功！确认后跳转回租户管理页面');location.href='manageshow_fuser.php'</script>";

@@ -30,8 +30,7 @@
        {
            $sql="select * from house where $sel like '%$keyword%'";
            $rs=mysql_query($sql)or die('执行失败');
-       }
-       if(mysql_num_rows($rs)>0)
+           if(mysql_num_rows($rs)>0)
        {
            echo"<p>关键字为'$keyword',共找到".mysql_num_rows($rs)."个符合房子</p>";
        
@@ -75,6 +74,10 @@ echo'<tr bgcolor="#e0e0e0"><td colspan="8"></td>
 else{
     echo'<h3 align="center">没有搜索到任何房屋！请重新查询！</h3>';
 }
+       }else{
+        header("location:manageshow_house.php");
+    }
+       
 }
 else{
     echo'<h1 align="center">您未登录，不可访问</h1>';

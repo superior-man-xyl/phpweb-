@@ -30,8 +30,7 @@
        {
            $sql="select * from user where $sel like '%$keyword%'";
            $rs=mysql_query($sql)or die('执行失败');
-       }
-       if(mysql_num_rows($rs)>0)
+           if(mysql_num_rows($rs)>0)
        {
            echo"<p>关键字为'$keyword',共找到".mysql_num_rows($rs)."个符合用户</p>";
        
@@ -44,6 +43,7 @@
                <th>性别</th>
                <th>身份证号码</th>
                <th>电话号码</th> 
+               <th colspan="2">删除</th>
    </tr>';
    while ($row=mysql_fetch_assoc($rs)) {
     echo"
@@ -70,6 +70,10 @@ echo'<tr bgcolor="#e0e0e0"><td></td><td></td><td></td><td></td><td></td><td></td
 else{
     echo'<h3 align="center">没有搜索到任何用户！请重新查询！</h3>';
 }
+       }else{
+           header("location:manageshow_user.php");
+       }
+       
 }
 else{
     echo'<h1 align="center">您未登录，不可访问</h1>';

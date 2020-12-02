@@ -16,12 +16,12 @@
        mysql_query("set names 'utf8'");
        mysql_select_db("house", $conn);
        $result=mysql_query("select * from house", $conn);
-       $j=0;
-        if($name==NULL)
-        {
-            echo'<p style="color:red;" align="center">姓名为空！</p>';
-            $j++;
-        }
+      //  $j=0;
+      //   if($name==NULL)
+      //   {
+      //       echo'<p style="color:red;" align="center">姓名为空！</p>';
+      //       $j++;
+      //   }
        $id=intval($_GET['id']);
        $sql="select * from house where houseid=$id";
        $result=mysql_query($sql, $conn);

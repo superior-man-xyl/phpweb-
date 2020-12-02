@@ -8,9 +8,16 @@
        body{
             background:url(../image/b3.jfif);
        }
+       tr:nth-child(odd){
+    background: rgb(186, 200, 204);
+}
+tr:nth-child(even){
+    background:rgb(122,133,136);
+}
     </style>
 </head>
 <body>
+<a href="manageshow.php">首页</a>
 <a href="manageshow_user.php">用户管理</a>
 <a href="manageshow_house.php">房屋管理</a>
 <a href="moutsystem.php">退出系统</a>
@@ -57,6 +64,7 @@
             <th>租期</th>
             <th>开始时间</th>
             <th>到期时间</th>
+            <th colspan="2">删除</th>
 </tr><?php
  if (isset($_SESSION['muser'])) {
      while ($row=mysql_fetch_assoc($result)) {
